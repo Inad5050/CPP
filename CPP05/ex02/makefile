@@ -1,4 +1,4 @@
-NAME = megaphone
+NAME = 28B
 CC = c++
 CCFLAGS = -Wall -Wextra -Werror -std=c++98
 

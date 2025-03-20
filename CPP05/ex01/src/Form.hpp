@@ -1,4 +1,7 @@
+#pragma once
 #include "Bureaucrat.hpp"
+
+class Bureaucrat;
 
 class Form
 {

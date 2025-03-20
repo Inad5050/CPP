@@ -5,12 +5,12 @@
 {
 	Bureaucrat john("John", 20);
 	std::cout << john << std::endl;
-	Form form1("form1", 5, 4);
-	std::cout << form1 << std::endl;
+	Form Form1("Form1", 5, 4);
+	std::cout << Form1 << std::endl;
 	try 
 	{
-		form1.beSigned(john);
-		form1.getIsItSigned();
+		Form1.beSigned(john);
+		Form1.getIsItSigned();
 	}
     catch (const std::exception& e) 
 	{
@@ -25,13 +25,13 @@ int main()
 	{
 		Bureaucrat john("John", 20);
 		std::cout << john << std::endl;
-		Form form1("form1", 5, 4);
-		std::cout << form1 << std::endl;
-		while (john.getGrade() > form1.getGradeToSign())
+		Form Form1("Form1", 5, 4);
+		std::cout << Form1 << std::endl;
+		while (john.getGrade() > Form1.getGradeToSign())
 			john.incrementGrade();
 		std::cout << john << std::endl;
-		form1.beSigned(john);
-		std::cout << form1.getIsItSigned() << std::endl;
+		john.signForm(Form1);
+		std::cout << Form1.getIsItSigned() << std::endl;
 	}
     catch (const std::exception& e) 
 	{

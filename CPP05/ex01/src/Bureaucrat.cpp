@@ -49,7 +49,7 @@ std::string Bureaucrat::getName() const
 	return (name);
 }
 
-int Bureaucrat::getGrade() const
+int	Bureaucrat::getGrade() const
 {
 	return (grade); 
 }
@@ -70,6 +70,18 @@ void Bureaucrat::incrementGrade()
 		throw Bureaucrat::GradeTooHighException();
 	else
 		grade--;
+}
+
+void Bureaucrat::signForm(Form& Form)
+{
+	std::cout << "Bureaucrat signForm() called" << std::endl;
+	if (grade <= Form.getGradeToSign())
+	{
+		Form.beSigned(*this);
+		std::cout << name << " signed " << Form.getName() << std::endl;
+	}
+	else
+		std::cout << name << " couldn't sign " << Form.getName() << " because their grade was too low!" << std::endl;
 }
 
 const char* Bureaucrat::GradeTooLowException::what() const throw() 
