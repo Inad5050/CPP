@@ -10,16 +10,40 @@ int main()
 	Bureaucrat minijohn("miniJohn", 150);
 	std::cout << minijohn << std::endl;
 
-	std::string target("Paco");
-	PresidentialPardonForm form1(target);
-	std::cout << form1;
-	RobotomyRequestForm form2(target);
-	std::cout << form2;
-	ShrubberyCreationForm form3(target);
-	std::cout << form3;
+	std::string target("Pedro");
+	PresidentialPardonForm pardon(target);
+	std::cout << pardon << std::endl;
+	RobotomyRequestForm robotomy(target);
+	std::cout << robotomy << std::endl;
+	ShrubberyCreationForm shrubbery(target);
+	std::cout << shrubbery << std::endl;
+
+	std::cout << std::endl;
 	try 
 	{
-		megajohn.signForm()
+		minijohn.signForm(pardon);
+		minijohn.signForm(robotomy);
+		minijohn.signForm(shrubbery);
+
+		std::cout << std::endl;
+
+		minijohn = megajohn;
+		std::cout << minijohn << std::endl;
+
+		std::cout << std::endl;
+
+		minijohn.signForm(pardon);
+		minijohn.signForm(robotomy);
+		minijohn.signForm(shrubbery);
+
+		std::cout << std::endl;
+
+		minijohn.executeForm(pardon);
+		std::cout << std::endl;
+		minijohn.executeForm(robotomy);
+		std::cout << std::endl;
+		minijohn.executeForm(shrubbery);
+		std::cout << std::endl;
 	}
     catch (const std::exception& e) 
 	{
