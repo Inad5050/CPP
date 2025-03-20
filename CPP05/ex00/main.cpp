@@ -3,13 +3,11 @@
 int main()
 {
 	Bureaucrat john("John", 2);
+	std::cout << john << std::endl;
 	try 
 	{
-        std::cout << john << std::endl;
-
         john.decreaseGrade();
         std::cout << john;
-
         john.incrementGrade();
 		std::cout << john;
         john.incrementGrade();

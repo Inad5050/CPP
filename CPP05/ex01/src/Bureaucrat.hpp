@@ -15,10 +15,10 @@ class Bureaucrat
 		Bureaucrat& operator=(const Bureaucrat& other);
 
 		std::string getName() const;
-		int getGrade() const;
+		int 		getGrade() const;
 		
-		void incrementGrade();
-		void decreaseGrade();
+		void 		incrementGrade();
+		void 		decreaseGrade();
 		
 
 	class GradeTooHighException : public std::exception 
@@ -34,4 +34,4 @@ class Bureaucrat
 	};
 };
 
-std::ostream& operator<<(std::ostream& os, const Bureaucrat& other); //if you pass a class as a const object the called method "insertionOperatorAux" must also be const
+std::ostream& 		operator<<(std::ostream& os, const Bureaucrat& other); //if you pass a class as a const object the called method "insertionOperatorAux" must also be const
