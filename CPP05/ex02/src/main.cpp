@@ -5,22 +5,22 @@
 
 int main()
 {
-	Bureaucrat megajohn("megaJohn", 2);
-	std::cout << megajohn << std::endl;
-	Bureaucrat minijohn("miniJohn", 150);
-	std::cout << minijohn << std::endl;
-
-	std::string target("Pedro");
-	PresidentialPardonForm pardon(target);
-	std::cout << pardon << std::endl;
-	RobotomyRequestForm robotomy(target);
-	std::cout << robotomy << std::endl;
-	ShrubberyCreationForm shrubbery(target);
-	std::cout << shrubbery << std::endl;
-
-	std::cout << std::endl;
 	try 
 	{
+		Bureaucrat megajohn("megaJohn", 2);
+		std::cout << megajohn << std::endl;
+		Bureaucrat minijohn("miniJohn", 150);
+		std::cout << minijohn << std::endl;
+	
+		std::string target("Pedro");
+		PresidentialPardonForm pardon(target);
+		std::cout << pardon << std::endl;
+		RobotomyRequestForm robotomy(target);
+		std::cout << robotomy << std::endl;
+		ShrubberyCreationForm shrubbery(target);
+		std::cout << shrubbery << std::endl;
+		std::cout << std::endl;
+		
 		minijohn.signForm(pardon);
 		minijohn.signForm(robotomy);
 		minijohn.signForm(shrubbery);

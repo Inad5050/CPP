@@ -22,6 +22,7 @@ class Form
 		int 		getGradeToSign() const;
 		int 		getGradeToExecute() const;
 		bool		getIsItSigned() const;
+		
 		void		beSigned(Bureaucrat& bure);
 
 		class GradeTooLowException: public std::exception

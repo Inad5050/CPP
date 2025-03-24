@@ -5,9 +5,16 @@ Intern::Intern()
 	std::cout << "Intern default constructor called" << std::endl;
 }
 
+Intern::Intern(std::string arg)
+{
+	std::cout << "Intern constructor called" << std::endl;
+	static_cast<void>(arg);
+}
+
 Intern::Intern(const Intern& other)
 {
-	std::cout << "Intern ccopy constructor called" << std::endl;
+	std::cout << "Intern copy constructor called" << std::endl;
+	static_cast<void>(other);
 }
 
 Intern::~Intern()
@@ -18,32 +25,40 @@ Intern::~Intern()
 Intern& Intern::operator=(const Intern& other)
 {
 	std::cout << "Intern copy operator called" << std::endl;
+	static_cast<void>(other);
 	return (*this);
+}
+
+const char*	Intern::InternNoFormFound::what() const throw()
+{
+	return ("No form found. Closing");
 }
 
 AForm*	Intern::makeForm(std::string form, std::string target)
 {
-	std::cout << "Intern makeForm() called" << std::endl;
-	if (makeFormAux(form, "Presidential") || makeFormAux(form, "presidential") || makeFormAux(form, "Pardon") || makeFormAux(form, "pardon"))
+	std::cout << "Intern makeForm() called: \"" << form << "\"" << std::endl;
+
+	int		index = 0 + \
+	1 * (makeFormAux(form, "Presidential") || makeFormAux(form, "presidential") || makeFormAux(form, "Pardon") || makeFormAux(form, "pardon")) + \
+	2 * (makeFormAux(form, "Robotomy") || makeFormAux(form, "robotomy") || makeFormAux(form, "Request") || makeFormAux(form, "request")) + \
+	3 * (makeFormAux(form, "Shrubber") || makeFormAux(form, "shrubber") || makeFormAux(form, "Creation") || makeFormAux(form, "creation"));
+
+	switch (index)
 	{
-		std::cout << "Intern creates form:" << form << std::endl;
-		AForm* newform = new PresidentialPardonForm(target);
-		return (newform);
+		case 1:
+			std::cout << "Intern creates form: PresidentialPardonForm" << std::endl;
+			return (new PresidentialPardonForm(target));
+		case 2:
+			std::cout << "Intern creates form: RobotomyRequestForm" << std::endl;
+			return (new RobotomyRequestForm(target));
+		case 3:
+			std::cout << "Intern creates form: ShrubberyCreationForm" << std::endl;
+			return (new ShrubberyCreationForm(target));
+		default:
+			std::cout << "Your intern is confused, he doesn't recognize: " << form << std::endl;
+			throw Intern::InternNoFormFound();
+			return (NULL);
 	}
-	else if (makeFormAux(form, "Robotomy") || makeFormAux(form, "robotomy") || makeFormAux(form, "Request") || makeFormAux(form, "request"))
-	{
-		std::cout << "Intern creates form:" << form << std::endl;
-		AForm* newform = new RobotomyRequestForm(target);
-		return (newform);
-	}
-	else if (makeFormAux(form, "Shrubbery") || makeFormAux(form, "shrubbery") || makeFormAux(form, "Creation") || makeFormAux(form, "creation"))
-	{
-		std::cout << "Intern creates form:" << form << std::endl;
-		AForm* newform = new ShrubberyCreationForm(target);
-		return (newform);
-	}
-	std::cout << "Your intern is confused, he doesn't regonize " << form << std::endl;
-	return (0);
 }
 
 bool	Intern::makeFormAux(std::string form, const char* keyWord)

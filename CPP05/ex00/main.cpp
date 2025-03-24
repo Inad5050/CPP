@@ -2,10 +2,11 @@
 
 int main()
 {
-	Bureaucrat john("John", 2);
-	std::cout << john << std::endl;
 	try 
 	{
+		Bureaucrat john("John", 2);
+		std::cout << john << std::endl;
+		
         john.decreaseGrade();
         std::cout << john;
         john.incrementGrade();

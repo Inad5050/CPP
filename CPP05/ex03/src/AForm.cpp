@@ -80,7 +80,6 @@ const char* AForm::AFormNotSigned::what() const throw()
 	return ("What are you doing?! This AForm is not signed yet!");
 }
 
-
 std::ostream&	operator<<(std::ostream& os, const AForm& other) //Passing by value requires the object to be copied, and std::ostream cannot be copied or moved. To fix this, you should pass the std::ostream by reference instead of by value.
 {
 	os << "AForm: name = " << other.getName() << "; signed = " << other.getIsItSigned() << "; to_sign = " << other.getGradeToSign() << "; to_execute = " << other.getGradeToExecute();
