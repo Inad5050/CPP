@@ -2,5 +2,4 @@
 
 class Base;
 
-C::C(): type("C")
-{};
+C::C() {};

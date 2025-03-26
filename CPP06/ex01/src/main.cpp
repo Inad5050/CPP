@@ -11,5 +11,8 @@ int	main()
 	Serializer::deserialize(ptr1);
 	std::cout << Serializer::deserialize(ptr1) << std::endl;
 
+	std::cout << "struc.id = " << struc.id << std::endl;
+	std::cout << "struc.str = " << struc.str << std::endl;
+
 	return (0);
 }

@@ -3,15 +3,9 @@
 #include "B.hpp"
 #include "C.hpp"
 
-Base::Base(): type("default")
+Base::Base()
 {
 	std::cout << "Default Base constructor called" << std::endl;
-}
-
-Base::Base(std::string str)
-{
-	std::cout << "Default Base constructor called" << std::endl;
-	type = str;
 }
 
 Base::~Base()
@@ -36,15 +30,61 @@ Base * Base::generate(void)
 
 void Base::identify(Base* p)
 {
-	std::cout << "identify() function called. Class: " << p->getType() << std::endl;
+	A* ptrA;
+	B* ptrB;
+	C* ptrC;
+	if (!p)
+		std::cerr << "identify() function called. Null pointer" << std::endl;	
+	std::cout << "identify() function called." << std::endl;
+	ptrA = dynamic_cast<A*>(p); 
+	if (ptrA)
+	{
+		std::cout << "Class type: A" << std::endl;
+		return;
+	}
+	ptrB = dynamic_cast<B*>(p); 
+	if (ptrB)
+	{
+		std::cout << "Class type: B" << std::endl;
+		return;
+	}
+	ptrC = dynamic_cast<C*>(p);
+	if (ptrC)
+	{
+		std::cout << "Class type: C" << std::endl;
+		return;
+	}
 }
 
 void Base::identify(Base& p)
 {
-	std::cout << "identify() function called. Class: " << p.getType() << std::endl;
-}
-
-std::string Base::getType()
-{
-	return (type);
+	A& classA();
+	B& classB();
+	C& classC();
+	
+	std::cout << "identify() function called." << std::endl;
+	try
+	{
+		classA = dynamic_cast<A&>(p); //dynamic_cast automatically throws an exception (std::badcast)
+	}
+	catch (const std::exception& e)
+	{
+		std::cerr << "Class is not type A. " << e.what() << std::endl;
+	}
+	try
+	{
+		classB = dynamic_cast<B&>(p);
+	}
+	catch (const std::exception& e)
+	{
+		std::cerr << "Class is not type B. " << e.what() << std::endl;
+	}
+	try
+	{
+		classC = dynamic_cast<C&>(p);
+	}
+	catch (const std::exception& e)
+	{
+		std::cerr << "Class is not type C. " << e.what() << std::endl; 
+	}
 }

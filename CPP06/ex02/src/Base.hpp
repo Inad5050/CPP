@@ -10,17 +10,13 @@ class C;
 
 class Base
 {
-	private:
-		std::string type;
-
 	public:
 		Base();
-		Base(std::string str);
-		~Base();
+		virtual ~Base();
 
 		Base * generate(void);
 		void identify(Base* p);
 		void identify(Base& p);
-
-		std::string getType();
 };
+
+	
