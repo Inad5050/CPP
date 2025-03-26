@@ -17,14 +17,22 @@ Base * Base::generate(void)
 {
 	std::cout << "generate() function called" << std::endl;
 	srand(time(0));
-	int num = rand();
-	Base* p = NULL;
-	if (num % 3 == 0)
-		p = new A();
-	else if (num % 3 == 1)
-		p = new B();
-	else if (num % 3 == 2)
-		p = new C();
+	int num = rand() % 3;
+	Base* p;
+	switch (num)
+	{
+		case(0):
+			p = new A();
+			break;
+		case(1):
+			p = new B();
+			break;
+		case(2):
+			p = new C();
+			break;
+		default:
+			p = NULL;
+	}
 	return (p);
 }
 
@@ -58,33 +66,32 @@ void Base::identify(Base* p)
 
 void Base::identify(Base& p)
 {
-	A& classA();
-	B& classB();
-	C& classC();
-	
 	std::cout << "identify() function called." << std::endl;
 	try
 	{
-		classA = dynamic_cast<A&>(p); //dynamic_cast automatically throws an exception (std::badcast)
+		A& classA = dynamic_cast<A&>(p); //dynamic_cast automatically throws an exception (std::badcast)
+		(void)classA;
 	}
 	catch (const std::exception& e)
 	{
-		std::cerr << "Class is not type A. " << e.what() << std::endl;
+		std::cerr << "Class is not type A" << e.what() << std::endl;
 	}
 	try
 	{
-		classB = dynamic_cast<B&>(p);
+		B& classB = dynamic_cast<B&>(p);
+		(void)classB;
 	}
 	catch (const std::exception& e)
 	{
-		std::cerr << "Class is not type B. " << e.what() << std::endl;
+		std::cerr << "Class is not type B" << e.what() << std::endl;
 	}
 	try
 	{
-		classC = dynamic_cast<C&>(p);
+		C& classC = dynamic_cast<C&>(p);
+		(void)classC;
 	}
 	catch (const std::exception& e)
 	{
-		std::cerr << "Class is not type C. " << e.what() << std::endl; 
+		std::cerr << "Class is not type C" << e.what() << std::endl; 
 	}
 }
