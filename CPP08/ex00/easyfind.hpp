@@ -4,11 +4,26 @@
 #include <vector>
 
 template <typename T>
-typename T::iterator easyfind(T& container, int value) //T::iterator en C++ es una notación que hace referencia al tipo del iterador asociado con una clase o contenedor genérico T. //Define cómo se recorren los elementos dentro del contenedor.Define cómo se recorren los elementos dentro del contenedor.
+typename T::iterator easyfind(T container, int nmb)
 {
-	typename T::iterator it = std::find(container.start(), container.end(), value);
+	typename T::iterator it = std::find(container.begin(), container.end(), nmb);
+	std::cout << "OLA " << *it << std::endl;
+	if (it == container.end())
+	{
+		std::cout << "element not found" << std::endl;
+		return(it);
+	}
+	else
+		return(it);
+};
+
+
+/* template <typename T>
+typename T::iterator easyfind(T container, int nmb)
+{
+	typename T::iterator it = std::find(container.begin(), container.end(), nmb);
 	if (it == container.end())
 		throw std::exception();
 	else
-		return (it);
-}
+		return(*it);
+}; */

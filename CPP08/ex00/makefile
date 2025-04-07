@@ -1,4 +1,4 @@
-NAME = template
+NAME = easyfind
 CC = c++
 CCFLAGS = -Wall -Wextra -Werror -std=c++98
 
