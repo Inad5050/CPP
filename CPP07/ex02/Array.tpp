@@ -1,5 +1,3 @@
-#include "Array.hpp"
-
 template <typename T>
 Array<T>::Array(): array(NULL), size(0)
 {
@@ -10,13 +8,15 @@ template <typename T>
 Array<T>::Array(unsigned int n): array(new T[n]), size(n)
 {
 	std::cout << "Array default constructor called" << std::endl;
+	for (unsigned int i = 0; i < size; i++)
+		array[i] = T(); // T() representa el valor por defecto, para un tipo primitivo (int, char...) sera 0.
 }
 
 template <typename T>
 Array<T>::Array(const Array<T>& other): array(new T[other.size()]), size(other.size())
 {
 	std::cout << "Array copy constructor called" << std::endl;
-	for (int i = 0; i < other.size(), i++)
+	for (int i = 0; i < other.size(); i++)
 		array[i] = other.array[i];
 }
 
@@ -37,17 +37,26 @@ Array<T>& Array<T>::operator=(const Array<T>& other)
 		size = other.size();
 		delete[] array;
 		array = new T[other.size()];
-		for (int i = 0; i < other.size(), i++)
+		for (int i = 0; i < other.size(); i++)
 			array[i] = other.array[i];
 	}
 	return (*this);
 }
 
 template <typename T>
-unsigned int	Array<T>::size()
+unsigned int	Array<T>::get_size() const
 {
 	return (size);
 }
+
+template <typename T>
+T& Array<T>::operator[](unsigned int i)
+{
+	if (size <= i)
+		throw std::exception();
+	return (array[i]);
+}
+
 
 /* template <typename T> //En C++, los arreglos dinámicos (new T[n]) no tienen un indicador del tamaño ni un terminador automático, como NULL. Por lo tanto, recorrerlo hasta que array[i] sea NULL no es fiable.
 unsigned int	Array<T>::size()

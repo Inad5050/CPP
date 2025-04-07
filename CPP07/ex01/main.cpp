@@ -15,7 +15,6 @@ void	add3(char& c)
 	c -= 32;
 }
 
-
 int	main()
 {
 	int array1[] = {1, 2, 3, 4, 5, 6}; 

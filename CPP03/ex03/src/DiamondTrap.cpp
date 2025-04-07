@@ -3,17 +3,21 @@
 DiamondTrap::DiamondTrap(): ClapTrap(), FragTrap(), ScavTrap(), name("Default DiamondTrap name") //El compilador inicializa las clases base en el orden en que aparecen en la lista de herencia de la declaración de la clase derivada, no en el orden en que las coloques en la lista de inicialización de tu constructor.
 {
 	std::cout << "DiamondTrap default constructor called!" << std::endl;
-	HitPoints = 100;
-	EnergyPoints = 50;
-	AttackDamage = 30;
+	HitPoints = ClapTrap::HitPoints;
+	EnergyPoints = FragTrap::EnergyPoints;
+	AttackDamage = ScavTrap::AttackDamage;
+
+	std::cout << HitPoints << EnergyPoints << AttackDamage << std::endl;
 }
 
 DiamondTrap::DiamondTrap(std::string str): ClapTrap(str + "_clap_name"), FragTrap(), ScavTrap(), name(str)
 {
 	std::cout << "DiamondTrap constructor called!" << std::endl;
-	HitPoints = 100;
-	EnergyPoints = 50;
-	AttackDamage = 30;
+	HitPoints = ClapTrap::HitPoints;
+	EnergyPoints = FragTrap::EnergyPoints;
+	AttackDamage = ScavTrap::AttackDamage;
+
+	std::cout << " " << HitPoints << " " << EnergyPoints << " " << AttackDamage << " " << std::endl;
 }
 
 DiamondTrap::DiamondTrap(const DiamondTrap& other): ClapTrap(other.name + "_clap_name"), FragTrap(), ScavTrap(), name(other.name)
