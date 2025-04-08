@@ -36,8 +36,7 @@ void Span::addNumber(int nmb)
 {
 	std::cout << "Add number called " << N << " " << vec.size() << std::endl;
 	if (N <= vec.size())
-		throw std::out_of_range("EXCEPTION: 
-			addNumber");
+		throw std::out_of_range("EXCEPTION: addNumber");
 	vec.push_back(nmb);
 }
 
@@ -45,8 +44,7 @@ void Span::superAddNumber(int *arr, int size)
 {
 	std::cout << "superAdd number called " << std::endl;
 	if (arr == NULL || N <= size + vec.size())
-		throw std::out_of_range("EXCEPTION: 
-		superAddNumber");
+		throw std::out_of_range("EXCEPTION: superAddNumber");
 	else
 		vec.insert(vec.end(), arr, arr + size);
 }
@@ -55,8 +53,7 @@ int Span::shortestSpan()
 {
 	std::cout << "shortestSpan called " << std::endl;
 	if (vec.size() < 2)
-		throw std::out_of_range("EXCEPTION: 
-		shortestSpan");
+		throw std::out_of_range("EXCEPTION: shortestSpan");
 	int size = vec.size();
 	int results[size];
 
@@ -72,7 +69,6 @@ int Span::longestSpan()
 {
 	std::cout << "longestSpan called " << std::endl;
 	if (vec.size() < 2)
-		throw std::out_of_range("EXCEPTION: 
-		longestSpan");
+		throw std::out_of_range("EXCEPTION: longestSpan");
 	return(*(std::max_element(vec.begin(), vec.end())) - *(std::min_element(vec.begin(), vec.end())));
 }
