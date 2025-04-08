@@ -5,20 +5,14 @@ MutantStack<T>::MutantStack(): std::stack<T>()
 }
 
 template <typename T>
-MutantStack<T>::MutantStack(T* begin, T* end): std::stack<T>(begin, end)
-{
-	std::cout << "MutantStack constructor called" << std::endl;
-}
-
-template <typename T>
-MutantStack<T>::MutantStack(MutantStack<T>& other):
+MutantStack<T>::MutantStack(const MutantStack<T>& other)
 {
 	std::cout << "MutantStack copy constructor called" << std::endl;
 	this->c = other.c;
 }
 
 template <typename T>
-MutantStack<T>& MutantStack<T>::operator=(MutantStack<T>& other)
+MutantStack<T>& MutantStack<T>::operator=(const MutantStack<T>& other)
 {
 	std::cout << "MutantStack copy assignment operator called" << std::endl;
 	if (this != &other)
@@ -33,30 +27,30 @@ MutantStack<T>::~MutantStack()
 }
 
 template <typename T>
-typename MutantStack<T>::iterator end()
+typename std::stack<T>::container_type::iterator MutantStack<T>::end() //se asume la relación de herencia porque std::stack<T> es la clase base de MutantStack
 {
 	std::cout << "MutantStack end method called" << std::endl;
-	return (container_type.end());
+	return (this->c.end());
 }
 
 template <typename T>
-typename MutantStack<T>::const_iterator end()
+typename std::stack<T>::container_type::const_iterator MutantStack<T>::end() const
 {
 	std::cout << "MutantStack end method called" << std::endl;
-	return (const container_type.end());
+	return (this->c.end());
 }
  
 template <typename T>
-typename MutantStack<T>::iterator begin()
+typename std::stack<T>::container_type::iterator MutantStack<T>::begin()
 {
 	std::cout << "MutantStack begin method called" << std::endl;
-	return (container_type.begin()); 
+	return (this->c.begin()); 
 }
 
 template <typename T>
-typename MutantStack<T>::const_iterator begin()
+typename std::stack<T>::container_type::const_iterator MutantStack<T>::begin() const //en los .tpp tambíen se pone const
 {
 	std::cout << "MutantStack begin method called" << std::endl;
-	return (const container_type.begin());
+	return (this->c.begin());
 }
  
