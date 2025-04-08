@@ -27,7 +27,6 @@ Array<T>::~Array()
 	delete[] array;
 }
 
-
 template <typename T>
 Array<T>& Array<T>::operator=(const Array<T>& other)
 {
