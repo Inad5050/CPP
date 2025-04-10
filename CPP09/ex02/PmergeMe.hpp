@@ -5,13 +5,21 @@
 #include <cstdlib>
 #include <limits>
 #include <sstream>
+#include <algorithm>
+#include <unistd.h>
+#include <ctime>
 
 class PmergeMe
 {
 	private:
 	std::vector<int> vector;
 	std::list<int> list;
-	
+
+	void	sortMergeInsertVector(std::vector<int> &cont);
+	void	InsertVector(std::vector<int> sorted, int value);
+	void	sortMergeInsertList(std::list<int> &cont);
+	void	InsertList(std::list<int> sorted, int value);
+
 	public:
 	PmergeMe();
 	PmergeMe(const char* input);
@@ -19,5 +27,6 @@ class PmergeMe
 	PmergeMe& operator=(const PmergeMe& other);
 	~PmergeMe();
 
-	int	addElements(const char* input);
+	int		add(const char* input);
+	void	sort();
 };
