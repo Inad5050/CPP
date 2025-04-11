@@ -97,7 +97,7 @@ void	PmergeMe::sort()
 	for (size_t i = 0; i < vector.size(); i++)
 		std::cout << vector[i] << " ";
 	std::cout << std::endl;
-	std::cout << "Time to process a range of " << vector.size() << " elements with std::vector => " << vector_time << std::endl;
+	std::cout << "Time to process a range of " << vector.size() << " elements with std::vector => " << vector_time << " µs" << std::endl;
 	std::cout << std::endl;
 
 	std::list<int> tmp_list = list;
@@ -111,7 +111,7 @@ void	PmergeMe::sort()
 	for (std::list<int>::iterator it = list.begin(); it != list.end(); it++)
 		std::cout << *it << " ";
 	std::cout << std::endl;
-	std::cout << "Time to process a range of " << list.size() << " elements with std::list => " << list_time << std::endl;
+	std::cout << "Time to process a range of " << list.size() << " elements with std::list => " << list_time << " µs" << std::endl;
 	std::cout << std::endl;
 }
 
