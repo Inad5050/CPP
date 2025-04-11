@@ -76,6 +76,13 @@ int	PmergeMe::add(const char* input)
 	for (size_t i = 0; i < vector.size(); i++)
 		list.push_back(vector[i]);
 
+	std::vector<int> checkedElements;
+	for (std::vector<int>::iterator it = vector.begin(); it != vector.end(); it++) 
+	{
+		if (std::find(checkedElements.begin(), checkedElements.end(), *it) == checkedElements.end())
+			return (std::cerr << "Error: Repeated numbers => " << *it << std::endl, 1);
+		checkedElements.push_back(*it);
+	}
 	return (0);
 };
 
@@ -206,27 +213,30 @@ void	PmergeMe::sortMergeInsertList(std::list<int> &cont)
 /* 	for (std::list<int>::iterator it = list.begin(); it != list.end(); it++)
 		std::cout << "list = " << *it << " ";
 	std::cout << std::endl;
-	std::cout << std::endl;	
-*/	
+	std::cout << std::endl;	 */
+	
 	cont = bigger;
+	insertionSortList(list);
 }
 
-void PmergeMe::insertionSortList(std::list<int>& lst)
+void PmergeMe::insertionSortList(std::list<int>& lst) 
 {
-    std::list<int>::iterator it = lst.begin();
-    it++;
-    for (; it != lst.end(); ++it) 
+    bool swapped = true;
+    while (swapped) 
 	{
-        int key = *it;
-        std::list<int>::iterator prev = it;
-        while (prev != lst.begin() && *(--prev) > key) 
+        swapped = false;
+        std::list<int>::iterator it1 = lst.begin();
+        std::list<int>::iterator it2 = ++lst.begin();
+        
+        while (it2 != lst.end()) 
 		{
-            std::list<int>::iterator next = prev;
-            ++next;
-            *next = *prev;
+            if (*it1 > *it2) 
+			{
+                std::swap(*it1, *it2);
+                swapped = true;
+            }
+            ++it1;
+            ++it2;
         }
-        std::list<int>::iterator next = prev;
-        ++next;
-        *next = key;
-	}
+    }
 }
