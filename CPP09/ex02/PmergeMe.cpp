@@ -65,6 +65,7 @@ int	PmergeMe::add(const char* input)
 	if (subStringVector.empty())
 		return (std::cerr << "Error: No numbers received" << std::endl, 1);
 
+	std::cout << std::endl;
 	std::cout << "BEFORE: ";
 	for (size_t i = 0; i < subStringVector.size(); i++)
 		std::cout << subStringVector[i] << " ";
@@ -85,8 +86,10 @@ void	PmergeMe::sort()
 	double	vector_time;
 	double	list_time;
 
+	std::vector<int> tmp_vector = vector;
+	vector.clear();
 	start = clock();
-	sortMergeInsertVector(vector);
+	sortMergeInsertVector(tmp_vector);
 	end = clock();
 	vector_time = static_cast<double>(end - start) / CLOCKS_PER_SEC * 1e6;
 
@@ -97,8 +100,10 @@ void	PmergeMe::sort()
 	std::cout << "Time to process a range of " << vector.size() << " elements with std::vector => " << vector_time << std::endl;
 	std::cout << std::endl;
 
+	std::list<int> tmp_list = list;
+	list.clear();
 	start = clock();
-	sortMergeInsertList(list);
+	sortMergeInsertList(tmp_list);
 	end = clock();
 	list_time = static_cast<double>(end - start) / CLOCKS_PER_SEC * 1e6;
 
@@ -117,7 +122,10 @@ void	PmergeMe::sortMergeInsertVector(std::vector<int> &cont)
 	std::vector<int>::iterator it = cont.begin();
 
 	if (cont.size() <= 1)
+	{
+		vector.insert(vector.end(), cont.begin(), cont.end());
 		return;
+	}
 	while (it != cont.end())
 	{
 		std::vector<int>::iterator first = it;
@@ -137,16 +145,26 @@ void	PmergeMe::sortMergeInsertVector(std::vector<int> &cont)
 	}
 	sortMergeInsertVector(bigger);
 
-	for (std::vector<int>::iterator it = smaller.begin(); it != smaller.end(); it++)
-		InsertVector(bigger, *it);
+/* 	for (std::vector<int>::iterator it = smaller.begin(); it != smaller.end(); it++)
+		InsertVector(bigger, *it); */	
+	
+	vector.insert(vector.end(), smaller.begin(), smaller.end());
+
 	cont = bigger;
+	insertionSortVector(vector);
 }
 
-void	PmergeMe::InsertVector(std::vector<int> sorted, int value)
+void PmergeMe::insertionSortVector(std::vector<int>& vec) 
 {
-	std::vector<int>::iterator it;
-	for (it = sorted.begin(); it != sorted.end() && *it < value; it++);
-	sorted.insert(it, value);
+    for (size_t i = 1; i < vec.size(); ++i) {
+        int key = vec[i];
+        size_t j = i;
+        while (j > 0 && vec[j - 1] > key) {
+            vec[j] = vec[j - 1];
+            --j;
+        }
+        vec[j] = key;
+    }
 }
 
 void	PmergeMe::sortMergeInsertList(std::list<int> &cont)
@@ -156,7 +174,10 @@ void	PmergeMe::sortMergeInsertList(std::list<int> &cont)
 	std::list<int>::iterator it = cont.begin();
 
 	if (cont.size() <= 1)
+	{
+		list.insert(list.end(), cont.begin(), cont.end());
 		return;
+	}
 	while (it != cont.end())
 	{		
 		std::list<int>::iterator first = it;
@@ -176,14 +197,36 @@ void	PmergeMe::sortMergeInsertList(std::list<int> &cont)
 	}
 	sortMergeInsertList(bigger);
 
-	for (std::list<int>::iterator it = smaller.begin(); it != smaller.end(); it++)
-		InsertList(bigger, *it);
+/* 	for (std::list<int>::iterator it = smaller.begin(); it != smaller.end(); it++)
+		std::cout << "smaller = " << *it << " ";
+	std::cout << std::endl;
+ */
+	list.insert(list.end(), smaller.begin(), smaller.end());
+
+/* 	for (std::list<int>::iterator it = list.begin(); it != list.end(); it++)
+		std::cout << "list = " << *it << " ";
+	std::cout << std::endl;
+	std::cout << std::endl;	
+*/	
 	cont = bigger;
 }
 
-void	PmergeMe::InsertList(std::list<int> sorted, int value)
+void PmergeMe::insertionSortList(std::list<int>& lst)
 {
-	std::list<int>::iterator it;
-	for (it = sorted.begin(); it != sorted.end() && *it < value; it++);
-	sorted.insert(it, value);
+    std::list<int>::iterator it = lst.begin();
+    it++;
+    for (; it != lst.end(); ++it) 
+	{
+        int key = *it;
+        std::list<int>::iterator prev = it;
+        while (prev != lst.begin() && *(--prev) > key) 
+		{
+            std::list<int>::iterator next = prev;
+            ++next;
+            *next = *prev;
+        }
+        std::list<int>::iterator next = prev;
+        ++next;
+        *next = key;
+	}
 }

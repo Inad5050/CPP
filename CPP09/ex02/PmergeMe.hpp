@@ -16,9 +16,9 @@ class PmergeMe
 	std::list<int> list;
 
 	void	sortMergeInsertVector(std::vector<int> &cont);
-	void	InsertVector(std::vector<int> sorted, int value);
+	void	insertionSortVector(std::vector<int>& vec);
 	void	sortMergeInsertList(std::list<int> &cont);
-	void	InsertList(std::list<int> sorted, int value);
+	void	insertionSortList(std::list<int>& lst);
 
 	public:
 	PmergeMe();
