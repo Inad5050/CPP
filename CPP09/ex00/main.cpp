@@ -15,7 +15,9 @@ int	main(int argc, char **argv)
 	return (0);
 }
 
-/* date | value
+/* 
+input1.txt
+date | value
 2011-01-03 | 3
 2011-01-03 | 2
 2011-01-03 | 1

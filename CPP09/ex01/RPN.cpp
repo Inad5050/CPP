@@ -87,7 +87,7 @@ void	RPN::solve()
 	int					nonNumberFlag = 0;
 	int					result = array.top() - '0';
 
-	std::cout << "size = " << array.size() << std::endl; //
+	/* std::cout << "size = " << array.size() << std::endl; // */
 	
 	array.pop();
 	size_t size = array.size();
@@ -95,7 +95,7 @@ void	RPN::solve()
 	for (size_t i = 0; i < size; i++)
 	{
 
-		std::cout << "i = " << i << " ; result = " << result << std::endl;
+		/* std::cout << "i = " << i << " ; result = " << result << std::endl; */
 
 		if (std::isdigit(array.top()))
 		{

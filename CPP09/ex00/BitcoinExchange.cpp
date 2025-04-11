@@ -47,12 +47,13 @@ void	BitcoinExchange::openData()
 	std::ifstream file("./data.csv");
 	if (!file)
 	{
-		std::cout << "Give me a CSV database" << std::endl;
+		throw std::out_of_range(std::string("Need a ./data.csv file"));
+/* 		std::cout << "Give me a CSV database" << std::endl;
 		if (!std::getline(std::cin, csvFile))
-			throw std::out_of_range(std::string("Invalid csvFile:" + csvFile).c_str());
+			throw std::out_of_range(std::string("Invalid csvFile: " + csvFile).c_str());
 		std::ifstream file(csvFile.c_str()); //podemos usar el constrcutor de ifstream o open() para abrir el archivo
 		if (!file)
-			throw std::out_of_range(std::string("Couldn't open file:" + csvFile).c_str());
+			throw std::out_of_range(std::string("Couldn't open file: " + csvFile).c_str()); */
 	}
 	while(std::getline(file, line))
 	{
