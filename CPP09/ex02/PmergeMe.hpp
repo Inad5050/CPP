@@ -15,10 +15,12 @@ class PmergeMe
 	std::vector<int> vector;
 	std::list<int> list;
 
-	void	sortMergeInsertVector(std::vector<int> &cont);
+/* 	void	sortMergeInsertVector(std::vector<int> &cont);
 	void	insertionSortVector(std::vector<int>& vec);
 	void	sortMergeInsertList(std::list<int> &cont);
-	void	insertionSortList(std::list<int>& lst);
+	void	insertionSortList(std::list<int>& lst); */
+	void 	sortMergeInsertVector(std::vector<int>& sequence);
+	void 	sortMergeInsertList(std::list<int>& sequence);
 
 	public:
 	PmergeMe();

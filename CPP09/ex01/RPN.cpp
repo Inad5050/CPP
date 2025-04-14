@@ -44,10 +44,18 @@ int	RPN::addElements(const char *input)
 			return (std::cerr << "First character must be a numeric value: " << input[i] << std::endl, 1);
 		if (!std::strchr(accepted_chars, input[i]))
 			return (std::cerr << "Invalid character: " << input[i] << std::endl, 1);
+		if (i > 0 && std::isdigit(input[i]) && std::isdigit(input[i - 1]))
+			return (std::cerr << "Number too big: " << input[i - 1] << input[i] << std::endl, 1);
 		if (input[i] == 32 || (9 <= input[i] && input[i] <= 13))
 			continue;
 		if (!std::isdigit(input[i])) //devuelve 0 si no es un numero
+		{
 			nonNmbCount += 1;
+			if (nmbCount < 2)
+				return (std::cerr << "Second character must be a numeric value: " << input[i] << std::endl, 1);
+			if (nonNmbCount + 1 > nmbCount)
+				return (std::cerr << "Too many non-number characters" << std::endl, 1);
+		}
 		else
 			nmbCount += 1;
 	}
@@ -59,9 +67,7 @@ int	RPN::addElements(const char *input)
 	}
 	if (array.empty())
 		return (std::cerr << "Container is empty" << std::endl, 1);
-	if (!(nonNmbCount + 1 == nmbCount))
-		return (std::cerr << "There cannot be more than x non-numeric characters unless prefaced by x+1 numeric characters" << std::endl, 1);
-	if (nmbCount > 10)
+	if (nonNmbCount + 1 < nmbCount)
 		return (std::cerr << "Too many numbers" << std::endl, 1);
 
 /* 	size_t size = array.size();

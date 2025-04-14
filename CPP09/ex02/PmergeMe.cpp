@@ -76,13 +76,13 @@ int	PmergeMe::add(const char* input)
 	for (size_t i = 0; i < vector.size(); i++)
 		list.push_back(vector[i]);
 
-	std::vector<int> checkedElements;
+/* 	std::vector<int> checkedElements;
 	for (std::vector<int>::iterator it = vector.begin(); it != vector.end(); it++) 
 	{
 		if (std::find(checkedElements.begin(), checkedElements.end(), *it) == checkedElements.end())
 			return (std::cerr << "Error: Repeated numbers => " << *it << std::endl, 1);
 		checkedElements.push_back(*it);
-	}
+	} */
 	return (0);
 };
 
@@ -93,10 +93,8 @@ void	PmergeMe::sort()
 	double	vector_time;
 	double	list_time;
 
-	std::vector<int> tmp_vector = vector;
-	vector.clear();
 	start = clock();
-	sortMergeInsertVector(tmp_vector);
+	sortMergeInsertVector(vector);
 	end = clock();
 	vector_time = static_cast<double>(end - start) / CLOCKS_PER_SEC * 1e6;
 
@@ -107,10 +105,8 @@ void	PmergeMe::sort()
 	std::cout << "Time to process a range of " << vector.size() << " elements with std::vector => " << vector_time << " µs" << std::endl;
 	std::cout << std::endl;
 
-	std::list<int> tmp_list = list;
-	list.clear();
 	start = clock();
-	sortMergeInsertList(tmp_list);
+	sortMergeInsertList(list);
 	end = clock();
 	list_time = static_cast<double>(end - start) / CLOCKS_PER_SEC * 1e6;
 
@@ -122,7 +118,7 @@ void	PmergeMe::sort()
 	std::cout << std::endl;
 }
 
-void	PmergeMe::sortMergeInsertVector(std::vector<int> &cont)
+/* void	PmergeMe::sortMergeInsertVector(std::vector<int> &cont)
 {	
 	std::vector<int> smaller;
 	std::vector<int> bigger;
@@ -151,9 +147,6 @@ void	PmergeMe::sortMergeInsertVector(std::vector<int> &cont)
 		}
 	}
 	sortMergeInsertVector(bigger);
-
-/* 	for (std::vector<int>::iterator it = smaller.begin(); it != smaller.end(); it++)
-		InsertVector(bigger, *it); */	
 	
 	vector.insert(vector.end(), smaller.begin(), smaller.end());
 
@@ -204,16 +197,7 @@ void	PmergeMe::sortMergeInsertList(std::list<int> &cont)
 	}
 	sortMergeInsertList(bigger);
 
-/* 	for (std::list<int>::iterator it = smaller.begin(); it != smaller.end(); it++)
-		std::cout << "smaller = " << *it << " ";
-	std::cout << std::endl;
- */
 	list.insert(list.end(), smaller.begin(), smaller.end());
-
-/* 	for (std::list<int>::iterator it = list.begin(); it != list.end(); it++)
-		std::cout << "list = " << *it << " ";
-	std::cout << std::endl;
-	std::cout << std::endl;	 */
 	
 	cont = bigger;
 	insertionSortList(list);
@@ -237,6 +221,73 @@ void PmergeMe::insertionSortList(std::list<int>& lst)
             }
             ++it1;
             ++it2;
+        }
+    }
+}
+ */
+
+//------------------------------
+
+void PmergeMe::sortMergeInsertVector(std::vector<int>& sequence) 
+{
+    if (sequence.size() <= 1) return;
+
+    std::vector<int> left(sequence.begin(), sequence.begin() + sequence.size() / 2);
+    std::vector<int> right(sequence.begin() + sequence.size() / 2, sequence.end());
+
+    sortMergeInsertVector(left);
+    sortMergeInsertVector(right);
+
+    sequence.clear();
+    std::vector<int>::iterator itL = left.begin();
+    std::vector<int>::iterator itR = right.begin();
+    while (itL != left.end() || itR != right.end()) 
+    {
+        if (itR == right.end() || (itL != left.end() && *itL < *itR)) 
+        {
+            sequence.push_back(*itL);
+            ++itL;
+        } 
+        else 
+        {
+            sequence.push_back(*itR);
+            ++itR;
+        }
+    }
+}
+
+void PmergeMe::sortMergeInsertList(std::list<int>& sequence) 
+{
+    if (sequence.size() <= 1) return;
+
+    std::list<int> left, right;
+    std::list<int>::iterator it = sequence.begin();
+    for (size_t i = 0; i < sequence.size() / 2; ++i, ++it) 
+    {
+        left.push_back(*it);
+    }
+    for (; it != sequence.end(); ++it) 
+    {
+        right.push_back(*it);
+    }
+
+    sortMergeInsertList(left);
+    sortMergeInsertList(right);
+
+    sequence.clear();
+    std::list<int>::iterator itL = left.begin();
+    std::list<int>::iterator itR = right.begin();
+    while (itL != left.end() || itR != right.end()) 
+    {
+        if (itR == right.end() || (itL != left.end() && *itL < *itR)) 
+        {
+            sequence.push_back(*itL);
+            ++itL;
+        } 
+        else 
+        {
+            sequence.push_back(*itR);
+            ++itR;
         }
     }
 }
