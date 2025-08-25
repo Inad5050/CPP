@@ -2,14 +2,6 @@
 
 Este repositorio contiene mis soluciones para los Módulos de C++ del cursus de 42. El objetivo de estos módulos es introducir los conceptos fundamentales de la programación orientada a objetos (POO) y las particularidades del lenguaje C++.
 
-<h2 align="center">
-    <a href="#sobre-los-módulos">Sobre los Módulos</a>
-    <span> · </span>
-    <a href="#proyectos">Proyectos</a>
-    <span> · </span>
-    <a href="#compilación-y-uso">Compilación y Uso</a>
-</h2>
-
 ## Sobre los Módulos
 
 El "C++ Piscine" o los "Módulos de C++" están diseñados para pasar de la programación procedural en C a la programación orientada a objetos en C++. A lo largo de 10 módulos (del 00 al 09), se cubren desde los conceptos más básicos hasta temas avanzados como plantillas (templates), contenedores de la STL y polimorfismo.
@@ -47,7 +39,6 @@ Proyectos: Animal, Brain, MateriaSource, Character.
 
 **CPP Module 05** - Excepciones
 
-Manejo de excepciones con bloques try, throw y catch.
 onceptos: Manejo de errores mediante excepciones.
 Proyectos: Bureaucrat, Form, ShrubberyCreationForm, RobotomyRequestForm, PresidentialPardonForm.
 
