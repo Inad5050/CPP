@@ -15,23 +15,23 @@ A continuación se detallan los temas principales y los proyectos de cada módul
 
 CPP Module 00 - **Nociones Básicas**
 
-Conceptos: Fundamentos de C++, std::cout, std::cin, clases, encapsulación, y visibilidad (público, privado).
+Fundamentos de C++, std::cout, std::cin, clases, encapsulación, y visibilidad (público, privado).
 
 CPP Module 01 - **Memoria, Punteros y Referencias**
 
-Conceptos: new y delete, punteros, referencias, heap vs stack.
+new y delete, punteros, referencias, heap vs stack.
 
 CPP Module 02 - **Polimorfismo Ad-hoc**
 
-Conceptos: Sobrecarga de operadores, forma canónica de Coplien (constructor de copia, operador de asignación, destructor).
+Sobrecarga de operadores, forma canónica de Coplien (constructor de copia, operador de asignación, destructor).
 
 CPP Module 03 - **Herencia**
 
-Conceptos: Herencia, constructores y destructores en jerarquías de clases, herencia múltiple y el problema del diamante.
+Herencia, constructores y destructores en jerarquías de clases, herencia múltiple y el problema del diamante.
 
 CPP Module 04 - **Polimorfismo de Subtipo**
 
-Conceptos: Polimorfismo, clases base abstractas, funciones virtuales puras.
+Polimorfismo, clases base abstractas, funciones virtuales puras.
 
 CPP Module 05 - **Excepciones**
 
@@ -39,19 +39,19 @@ onceptos: Manejo de errores mediante excepciones
 
 CPP Module 06 - **Conversiones de Tipo**
 
-Conceptos: Conversiones de tipo explícitas (*_cast).
+Conversiones de tipo explícitas (*_cast).
 
 CPP Module 07 - **Plantillas (Templates)**
 
-Conceptos: Programación genérica con plantillas de funciones y clases.
+Programación genérica con plantillas de funciones y clases.
 
 CPP Module 08 - **Contenedores STL**
 
-Conceptos: Contenedores de la STL, iteradores y algoritmos.
+Contenedores de la STL, iteradores y algoritmos.
 
 CPP Module 09 - **Contenedores y Algoritmos Avanzados**
 
-Conceptos: Implementación de contenedores y algoritmos complejos.
+Implementación de contenedores y algoritmos complejos.
 
 ## Compilación y Uso
 
