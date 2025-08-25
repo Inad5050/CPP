@@ -70,7 +70,7 @@ Proyectos: easyfind, span, MutantStack.
 
 Conceptos: Implementación de contenedores y algoritmos complejos.
 
-Proyectos: BitcoinExchange, PmergeMe.
+Proyectos: BitcoinExchange, RPN, PmergeMe.
 
 ## Compilación y Uso
 
